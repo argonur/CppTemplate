@@ -1,6 +1,10 @@
-cmake_minimum_required (VERSION 3.14)
+cmake_minimum_required (VERSION 3.28)
 
-project(TemplateCpp)
+project(CppTemplate)
+
+add_subdirectory(3rdParty/googletest)
+add_library (GTest::Main ALIAS gtest_main)
+add_library (GTest::Mock ALIAS gmock)
 
 add_compile_options(
 	-Wall
@@ -19,7 +23,7 @@ add_compile_options(
     -Weffc++
 )
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED  ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_COMPILE_FEATURES
@@ -38,7 +42,7 @@ set(CMAKE_CXX_COMPILE_FEATURES
     cxx_defaulted_functions
     cxx_delegating_constructors
     cxx_generalized_initializers
-    )
+)
 
 add_subdirectory(templateApp)
 
