@@ -6,14 +6,8 @@ message(CMaking: ${PROJECT_NAME})
 
 add_executable(${PROJECT_NAME} "")
 
-target_compile_options(${PROJECT_NAME}
-	PRIVATE
-		-Wno-effc++
-)
-
 target_sources(${PROJECT_NAME}
 	PRIVATE
-		src/main.cpp
 		src/test_myClass.cpp
 )
 
@@ -22,8 +16,10 @@ target_include_directories(${PROJECT_NAME}
 		${PROJECT_ROOT}/templateApp/src
 )
 
+# Link the test executable with GoogleTest libraries
 target_link_libraries(${PROJECT_NAME}
-	PRIVATE
-		GTest::Main
-	    GTest::Mock
+    PRIVATE
+		templateApp_sources # Sources to be unittested
+		gtest         # Core GoogleTest library
+		gtest_main    # Optional, provides a default main() for tests
 )

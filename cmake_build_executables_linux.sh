@@ -9,18 +9,18 @@ if [ -d "build" ]; then
     rm -r build
 fi
 
-mkdir -p build/Release
+mkdir -p build/Debug
 
 pushd ./build
 echo "Generate with cmake and build:"
 cmake \
--B ./Release/ \
+-B ./Debug/ \
 -DPROJECT_ROOT:PATH=$(pwd)/.. \
--DCMAKE_BUILD_TYPE:STRING=Release \
+-DCMAKE_BUILD_TYPE:STRING=Debug \
 ..
 popd > /dev/null
 
-pushd ./build/Release
+pushd ./build/Debug
 
 generationResult=-1
 
