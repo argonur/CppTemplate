@@ -4,23 +4,22 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 pushd $DIR
 
-if [ -d "build" ]; then
-    echo "Delete build folder."
-    rm -r build
+if [ -d "build/Release" ]; then
+    echo "Delete Release build folder."
+    rm -r build/Release
 fi
 
-mkdir -p build/Debug
+mkdir -p build/Release
 
 pushd ./build
 echo "Generate with cmake and build:"
 cmake \
--B ./Debug/ \
--DPROJECT_ROOT:PATH=$(pwd)/.. \
--DCMAKE_BUILD_TYPE:STRING=Debug \
+-B ./Release/ \
+-DCMAKE_BUILD_TYPE:STRING=Release \
 ..
 popd > /dev/null
 
-pushd ./build/Debug
+pushd ./build/Release
 
 generationResult=-1
 

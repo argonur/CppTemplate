@@ -11,7 +11,7 @@ public:
     std::string greet(const std::string& name) const;
 
 private:
-    int value_;
+    int m_value;
 };
 
 #endif // MYCLASS_H
